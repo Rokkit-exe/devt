@@ -57,16 +57,6 @@ If --output is not provided, the generated object will be printed to the console
 
 func init() {
 	rootCmd.AddCommand(generateCmd)
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// generateCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// generateCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 	generateCmd.Flags().StringP("type", "t", "", "Type of the object to generate")
 	generateCmd.Flags().StringP("output", "o", "", "Output path to save the generated object")
 	generateCmd.MarkFlagRequired("type")
