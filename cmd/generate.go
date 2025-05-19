@@ -37,7 +37,7 @@ to quickly create a Cobra application.`,
 			fmt.Println("Please provide a valid type: <uuid>")
 		}
 
-		savePath, err := cmd.Flags().GetString("save")
+		savePath, err := cmd.Flags().GetString("output")
 		if err != nil {
 			fmt.Println("Error retrieving flag <save>:", err)
 			return
@@ -69,6 +69,6 @@ func init() {
 	// is called directly, e.g.:
 	// generateCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 	generateCmd.Flags().StringP("type", "t", "", "Type of the object to generate")
-	generateCmd.Flags().StringP("save", "s", "", "Path to save the generated object")
+	generateCmd.Flags().StringP("output", "o", "", "Output path to save the generated object")
 	generateCmd.MarkFlagRequired("type")
 }
