@@ -14,13 +14,12 @@ import (
 // generateCmd represents the generate command
 var generateCmd = &cobra.Command{
 	Use:   "generate",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Generate a new random string or object",
+	Long: `Generate a new random string or object.
+This command supports the following types (--type):
+- uuid
+You can provide the output path to save the generated object. (--output)
+If --output is not provided, the generated object will be printed to the console.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		genType, err := cmd.Flags().GetString("type")
 		if err != nil {
@@ -39,7 +38,7 @@ to quickly create a Cobra application.`,
 
 		savePath, err := cmd.Flags().GetString("output")
 		if err != nil {
-			fmt.Println("Error retrieving flag <save>:", err)
+			fmt.Println("Error retrieving flag --output:", err)
 			return
 		}
 

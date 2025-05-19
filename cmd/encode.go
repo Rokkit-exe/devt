@@ -15,35 +15,35 @@ import (
 // encodeCmd represents the encode command
 var encodeCmd = &cobra.Command{
 	Use:   "encode",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Encodes a string using the specified encoding type",
+	Long: `Encodes a string using the specified encoding type.
+This command supports:
+-base64
+-hex 
+You can provide the input string directly (--input) or read it from a file (--file). 
+The encoded output can be printed to the console or saved to a file. (--output)`,
 	Run: func(cmd *cobra.Command, args []string) {
 		encodeType, err := cmd.Flags().GetString("type")
 		if err != nil {
-			fmt.Println("Error retrieving flag <type>:", err)
+			fmt.Println("Error retrieving flag --type:", err)
 			return
 		}
 
 		text, err := cmd.Flags().GetString("input")
 		if err != nil {
-			fmt.Println("Error retrieving flag <text>:", err)
+			fmt.Println("Error retrieving flag --input:", err)
 			return
 		}
 
 		filePath, err := cmd.Flags().GetString("file")
 		if err != nil {
-			fmt.Println("Error retrieving flag <file>:", err)
+			fmt.Println("Error retrieving flag --file:", err)
 			return
 		}
 
 		savePath, err := cmd.Flags().GetString("output")
 		if err != nil {
-			fmt.Println("Error retrieving flag <save>:", err)
+			fmt.Println("Error retrieving flag --output:", err)
 			return
 		}
 
@@ -60,7 +60,7 @@ to quickly create a Cobra application.`,
 		} else if text != "" && filePath == "" {
 			inputText = text
 		} else {
-			fmt.Println("Please provide either <text> or <file> to read the input string from.")
+			fmt.Println("Please provide either --input or --file to read the input string from.")
 			return
 		}
 
